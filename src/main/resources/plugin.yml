@@ -1,0 +1,13 @@
+name: BhiteList
+version: '${version}'
+main: ru.bronuh.bhitelist.BhiteList
+api-version: 1.19
+prefix: [ BhiteList ]
+authors: [ Bronuh ]
+description: Простой как бревно вайтлист для сервера. Надежный как нихрена.
+website: localhost
+commands:
+  wl:
+    description: Внести изменениея в список разрешенных пользователей
+    usage: /<command> [add|remove] [name]
+    aliases: [bhl]
