@@ -1,6 +1,7 @@
 package ru.bronuh.bhitelist;
 
 import net.kyori.adventure.text.format.TextColor;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Logger;
 
@@ -12,9 +13,9 @@ public class PluginContext {
 
 	private Logger log;
 	private String pluginDir;
-	private BhiteList pluginInstance;
+	private JavaPlugin pluginInstance;
 
-	public PluginContext(Logger log, String pluginDir, BhiteList pluginInstance){
+	public PluginContext(Logger log, String pluginDir, JavaPlugin pluginInstance){
 		this.log = log;
 		this.pluginDir = pluginDir;
 		this.pluginInstance = pluginInstance;
@@ -28,5 +29,5 @@ public class PluginContext {
 		return log;
 	}
 
-	public BhiteList getPluginInstance(){return pluginInstance;}
+	public JavaPlugin getPluginInstance(){return pluginInstance;}
 }
