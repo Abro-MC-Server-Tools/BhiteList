@@ -9,11 +9,15 @@ import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
+/**
+ * Хранит вайтлист и предоставляет методы для работы с ним
+ */
 public class WhitelistController {
 	PluginContext context;
-	private ArrayList<String> whitelist = new ArrayList<>();
+	private List<String> whitelist = new ArrayList<>();
 	private String dataDir;
 	private Logger log;
 
@@ -27,21 +31,27 @@ public class WhitelistController {
 			dir.mkdir();
 		}catch (Exception e){
 			log.warning("Не удалось создать директорию "+dataDir+": "+e.getMessage());
+			throw e;
 		}
 		loadWhitelist();
 	}
 
 
-
-
+	/**
+	 * Проверяет наличие имени в списке
+	 * @param name имя игрока
+	 * @return
+	 */
 	public boolean isWhitelisted(String name){
 		String lowercaseName = name.toLowerCase();
 		return whitelist.contains(lowercaseName);
 	}
 
 
-
-
+	/**
+	 * Добавляет имя в список
+	 * @param name имя игрока
+	 */
 	public void add(String name){
 		String lowercaseName = name.toLowerCase();
 		whitelist.add(lowercaseName);
@@ -49,8 +59,10 @@ public class WhitelistController {
 	}
 
 
-
-
+	/**
+	 * Удаляет имя из списка
+	 * @param name имя игрока
+	 */
 	public void remove(String name){
 		String lowercaseName = name.toLowerCase();
 		whitelist.remove(lowercaseName);
@@ -58,7 +70,9 @@ public class WhitelistController {
 	}
 
 
-
+	/**
+	 * Сохраняет вайтлист на диск
+	 */
 	public void saveWhitelist(){
 		Gson gson = new Gson();
 		File file = new File(dataDir,"whitelist.json");
@@ -77,8 +91,9 @@ public class WhitelistController {
 	}
 
 
-
-
+	/**
+	 * Читает вайтлист из файла
+	 */
 	private void loadWhitelist(){
 		Gson gson = new Gson();
 		File file = new File(dataDir,"whitelist.json");

@@ -5,7 +5,8 @@ import net.kyori.adventure.text.format.TextColor;
 import java.util.logging.Logger;
 
 public class PluginContext {
-	private TextColor warnColor = TextColor.color(255,100,100),
+	public final TextColor
+			warnColor = TextColor.color(255,100,100),
 			okColor = TextColor.color(100,255,100);
 
 
@@ -28,7 +29,4 @@ public class PluginContext {
 	}
 
 	public BhiteList getPluginInstance(){return pluginInstance;}
-
-	public TextColor getWarnColor(){return warnColor;}
-	public TextColor getOkColor(){return okColor;}
 }

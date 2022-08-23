@@ -7,7 +7,11 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
+// TODO: Выяснить почему PlayerLoginEvent внезапно не работает
 
+/**
+ * Слушатель событий
+ */
 public class EventsListener implements Listener {
 	PluginContext context;
 	WhitelistController controller;
@@ -18,12 +22,12 @@ public class EventsListener implements Listener {
 	}
 
 	@EventHandler(ignoreCancelled = true ,priority = EventPriority.HIGHEST)
-	public void onPlayerLogin(PlayerJoinEvent event) {
+	public void PlayerJoinEvent(PlayerJoinEvent event) {
 		context.getLog().info(event.getPlayer().getName()+" зашел на сервер.");
 		Player player = event.getPlayer();
 		String name = player.getName();
 		if(!controller.isWhitelisted(name)){
-			player.kick(Component.text("Вас нет в вайтлисте",context.getWarnColor()));
+			player.kick(Component.text("Вас нет в вайтлисте",context.warnColor));
 		}
 	}
 }

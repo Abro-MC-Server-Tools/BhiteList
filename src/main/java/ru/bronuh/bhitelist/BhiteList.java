@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.logging.Logger;
 
 public final class BhiteList extends JavaPlugin {
+	// TODO: Добавить вайтлист IP адресов
 
 	private final Logger log = getLogger();
 	private final String pluginDir = getDataFolder().getPath();
