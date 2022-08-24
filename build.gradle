@@ -33,12 +33,11 @@ java {
 }
 
 jar {
-    def localEnv = System.getenv('DEV_ENV')
-    System.out.println("localEnv is "+localEnv)
-    if(localEnv=="BRONUH_HOME"){
-        destinationDirectory.set(file("X:\\Games\\MC-servers\\paper-1.19.2\\plugins"))
-    }else if(localEnv=="BRONUH_NB"){
-        destinationDirectory.set(file("D:\\Games\\MC-servers\\paper-1.19.2\\plugins"))
+    def pluginDeploymentPath = System.getenv('MC_PLUGINS')
+    System.out.println("pluginDeploymentPath is "+pluginDeploymentPath)
+
+    if(pluginDeploymentPath!=null) {
+        destinationDirectory.set(file(pluginDeploymentPath))
     }
 }
 
